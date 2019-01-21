@@ -15,7 +15,8 @@ public class Greeting {
 		
 		// Find out the greeting language
 		if ( language == null )
-			language = Message.getDefaultLanguage();
+			// language = Message.getDefaultLanguage();
+			language = getDefaultLanguage();
 		
 		// Get the moment of the day
 		TimeOfTheDay moment;
@@ -27,11 +28,21 @@ public class Greeting {
 			moment = TimeOfTheDay.EVENING;
 			
 		// Return the message		
-		return Message.getMessage( moment, language );
+		// return Message.getMessage( moment, language );
+		return getMessage(language, moment);
 	}
 	
+	// Paso 4
 	int getHour() {
 		return my_calendar.getHourOfTheDay();
 	}
-
+	
+	// Paso 8
+	Language getDefaultLanguage() {
+		return Message.getDefaultLanguage();
+	}
+	
+	String getMessage(Language language, TimeOfTheDay moment) {
+		return Message.getMessage(moment, language);	
+	}		
 }

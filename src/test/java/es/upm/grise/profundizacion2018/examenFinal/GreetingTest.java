@@ -1,9 +1,7 @@
 package es.upm.grise.profundizacion2018.examenFinal;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import org.junit.Test;
 
@@ -32,6 +30,24 @@ public class GreetingTest {
 		when(greeting.getHour()).thenReturn(8);
 		
 		assertEquals("Buenos días", greeting.getGreeting(Language.SPANISH));
+	}
+	
+	@Test
+	public void smokeTest4(){
+		Greeting greeting = spy(new Greeting(new MyCalendar()));
+	
+		greeting.getGreeting(null);
+		verify(greeting, times(1)).getDefaultLanguage();
+		verify(greeting, times(1)).getMessage(Language.ENGLISH,TimeOfTheDay.MORNING);
+	}
+
+ 	@Test
+	public void smokeTest5(){
+ 		Greeting greeting = spy(new Greeting(new MyCalendar()));
+		
+ 		greeting.getGreeting(Language.SPANISH);
+		verify(greeting, times(0)).getDefaultLanguage();
+		verify(greeting, times(1)).getMessage(Language.SPANISH,TimeOfTheDay.MORNING);
 	}
 
 	
