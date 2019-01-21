@@ -11,7 +11,7 @@ public class Greeting {
 	public String getGreeting( Language language ) {
 		// Get current hour
 		// Calendar calendar = Calendar.getInstance();
-		int hour = my_calendar.getHourOfTheDay();
+		int hour = getHour();
 		
 		// Find out the greeting language
 		if ( language == null )
@@ -28,6 +28,10 @@ public class Greeting {
 			
 		// Return the message		
 		return Message.getMessage( moment, language );
+	}
+	
+	int getHour() {
+		return my_calendar.getHourOfTheDay();
 	}
 
 }
